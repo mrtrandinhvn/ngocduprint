@@ -1,0 +1,50 @@
+﻿.container.body-content {
+    padding-top: 60px;
+}
+
+.info .error, .info .Error {
+    color: red;
+}
+
+.slick-dots li button:before {
+    font-size: 10px !important;
+}
+
+.slider-container {
+    margin: 0px auto;
+    padding: 40px;
+    color: rgb(51, 51, 51);
+    background: rgb(65, 155, 224);
+    width: 100%;
+}
+
+.banner {
+    height: 350px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.page-title {
+}
+
+.footer-logo {
+    display: inline-block;
+    height: 48px;
+    width: 48px;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+    .footer-logo.facebook {
+        background-image: url("/Content/images/logo-facebook-400.png");
+    }
+
+@media screen and (max-width: 480px) {
+    .banner {
+        display: none;
+    }
+
+    .slider-container {
+        display: none;
+    }
+}

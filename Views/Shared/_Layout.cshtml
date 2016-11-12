@@ -1,0 +1,85 @@
+﻿@{
+    ViewBag.Version = "?gsv=1.1.0";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ngọc Du Print - @ViewBag.Title</title>
+    <link rel="stylesheet" href="@Url.Content("~/Content/bootstrap/bootstrap.min.css" + ViewBag.Version)" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/bootstrap3-dialog/bootstrap-dialog.min.css"+ ViewBag.Version)" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/global.css"+ ViewBag.Version)" />
+    <link rel="shortcut icon" href="@Url.Content("~/favicon.ico"+ ViewBag.Version)" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" />
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Ngọc Du Print", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Giới thiệu<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Cửa hàng", "About", "Home")</li>
+                            <li>@Html.ActionLink("Khách hàng thân thiết", "KhachHang", "Home")</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sản phẩm<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("In danh thiếp", "InDanhThiep", "Home")</li>
+                            <li>@Html.ActionLink("In tài liệu văn phòng", "InTaiLieuVanPhong", "Home")</li>
+                            <li>@Html.ActionLink("In giấy ảnh", "InGiayAnh", "Home")</li>
+                            <li>@Html.ActionLink("In màu", "InMau", "Home")</li>
+                            <li>@Html.ActionLink("In khổ lớn", "InKhoLon", "Home")</li>
+                            <li>@Html.ActionLink("In Menu cửa hàng", "InMenu", "Home")</li>
+                            <li>@Html.ActionLink("In thiệp mời, thiệp mừng", "InThiepMoi", "Home")</li>
+                            <li>@Html.ActionLink("In tiêu đề thư", "InTieuDeThu", "Home")</li>
+                            <li>@Html.ActionLink("In tờ rơi", "InToRoi", "Home")</li>
+                            <li>@Html.ActionLink("Photocopy", "PhotoCopy", "Home")</li>
+                            <li>@Html.ActionLink("Scan màu", "ScanMau", "Home")</li>
+                        </ul>
+                    </li>
+                </ul>
+                @*@Html.Partial("_LoginPartial")*@
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <div class="row">
+            <div class="col-sm-6">
+                <h4>Địa chỉ</h4>
+                <p>
+                    <span class="glyphicon glyphicon-home"></span> Số 20, Trần Cung, Hà Nội
+                    <br />
+                    <span class="glyphicon glyphicon-envelope"></span> ngocduphoto@gmail.com
+                    <br />
+                    <span class="glyphicon glyphicon-phone-alt"></span> (04)62696225
+                    <br />
+                    <span class="glyphicon glyphicon-phone"></span> 0914811747
+                    <br />
+                </p>
+            </div>
+            <div class="col-sm-6">
+                <a href="https://facebook.com"><span class="footer-logo facebook"></span></a>
+            </div>
+        </div>
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Ngọc Du Printing JSC</p>
+        </footer>
+    </div>
+</body>
+</html>
