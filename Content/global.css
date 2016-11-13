@@ -48,3 +48,12 @@
         display: none;
     }
 }
+
+/*.custom-navbar.navbar-inverse {
+    background-color: rgb(65, 155, 224);
+    border-color: rgb(65, 155, 224);
+}
+
+.custom-navbar .navbar-brand{
+    color: #b4f4ff !important;
+}*/

@@ -6,7 +6,9 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ngọc Du Print - @ViewBag.Title</title>
+    <meta name="keywords" content="in ha noi, in hà nội, photocopy ha noi, photocopy hà nội, scan ha noi, scan hà nội" />
+    <meta name="description" content="In Ngọc Du - In Hà Nội - Chuyên in ấn, scan màu các loại tài liệu và văn bản - 0914811747" />
+    <title>Ngọc Du Print - In Ngọc Du - @ViewBag.Title</title>
     <link rel="stylesheet" href="@Url.Content("~/Content/bootstrap/bootstrap.min.css" + ViewBag.Version)" />
     <link rel="stylesheet" href="@Url.Content("~/Content/bootstrap3-dialog/bootstrap-dialog.min.css"+ ViewBag.Version)" />
     <link rel="stylesheet" href="@Url.Content("~/Content/global.css"+ ViewBag.Version)" />
@@ -15,7 +17,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" />
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-inverse navbar-fixed-top custom-navbar">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -51,6 +53,13 @@
                         </ul>
                     </li>
                 </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <div style="padding:2px;color:red; font-size:18pt; text-indent:5px;">
+                            <span class="glyphicon glyphicon-phone-alt"></span><span style="font-weight:bold;text-indent:5px; display:inline-block;">0914811747</span>
+                        </div>
+                    </li>
+                </ul>
                 @*@Html.Partial("_LoginPartial")*@
             </div>
         </div>
@@ -78,7 +87,7 @@
         </div>
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Ngọc Du Printing JSC</p>
+            <p>&copy; @DateTime.Now.Year - Ngọc Du Printing JSC - Công ty cổ phần In Ngọc Du</p>
         </footer>
     </div>
 </body>

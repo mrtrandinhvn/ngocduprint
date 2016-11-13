@@ -6,7 +6,7 @@ var App = React.createClass({
     render: function () {
         return (
             <div>
-                <h1 className="page-title">Giấy Ảnh</h1>
+                <h1 className="page-title">In Giấy Ảnh</h1>
                 <div className="banner" style={{
                         backgroundImage: "url(\"/Content/images/sanpham-giayanh.gif\")",
                     }}></div>

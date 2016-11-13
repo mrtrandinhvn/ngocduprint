@@ -2,15 +2,74 @@
 var ReactDOM = require("react-dom");
 require("bootstrap");
 var Slider = require("react-slick");
+var Lightbox = require("react-images");
 
+var images = [
+    { src: "/Content/images/cuahang-1.jpg" },
+    { src: "/Content/images/cuahang-2.jpg" },
+    { src: "/Content/images/cuahang-3.jpg" },
+    { src: "/Content/images/cuahang-4.jpg" },
+    { src: "/Content/images/cuahang-5.jpg" }
+];
 var App = React.createClass({
+    getInitialState: function () {
+        return {
+            lightboxIsOpen: false,
+            currentImage: 0
+        }
+    },
+    openLightbox: function (index) {
+        this.setState({
+            currentImage: index,
+            lightboxIsOpen: true,
+        });
+    },
+    closeLightbox: function () {
+        this.setState({
+            currentImage: 0,
+            lightboxIsOpen: false,
+        });
+    },
+    gotoPrevious: function () {
+        this.setState({
+            currentImage: this.state.currentImage - 1,
+        });
+    },
+    gotoNext: function () {
+        this.setState({
+            currentImage: this.state.currentImage + 1,
+        });
+    },
+    gotoImage: function (index) {
+        this.setState({
+            currentImage: index,
+        });
+    },
+    handleClickImage: function () {
+        if (this.state.currentImage === images.length - 1) return;
+        this.gotoNext();
+    },
     render: function () {
+        var imgSlide = images.map(function (image, index) {
+            return (
+                <div key={index} onClick={function () { this.openLightbox(index) }.bind(this) }><img style={{ margin: "0 auto", width: "100%" }} src={image.src} /></div>
+            );
+        }.bind(this));
         return (
             <div>
                 <div className="jumbotron">
                     <h2 style={{ textAlign: "center" }}>CÔNG TY TNHH THƯƠNG MẠI VÀ CÔNG NGHIỆP IN NGỌC DU</h2>
                 </div>
                 <div className="slider-container">
+                    <Lightbox currentImage={this.state.currentImage}
+                              images={images}
+                              isOpen={this.state.lightboxIsOpen}
+                              onClickImage={this.handleClickImage}
+                              onClickNext={this.gotoNext}
+                              onClickPrev={this.gotoPrevious}
+                              onClickThumbnail={this.gotoImage}
+                              onClose={this.closeLightbox}
+                              showThumbnails={true}></Lightbox>
                 <Slider dots={true}
                         infinite={true}
                         speed={500}
@@ -20,13 +79,7 @@ var App = React.createClass({
                         autoplay={false}
                         autoplaySpeed={8000}
                         initialSlide={0}>
-                <div><img style={{ margin: "0 auto", width: "100%" }} src="/Content/images/cuahang-1.jpg" /></div>
-                <div><img style={{ margin: "0 auto", width: "100%" }} src="/Content/images/cuahang-2.jpg" /></div>
-                <div><img style={{ margin: "0 auto", width: "100%" }} src="/Content/images/cuahang-3.jpg" /></div>
-                <div><img style={{ margin: "0 auto", width: "100%" }} src="/Content/images/cuahang-4.jpg" /></div>
-                <div><img style={{ margin: "0 auto", width: "100%" }} src="/Content/images/cuahang-5.jpg" /></div>
-                <div><img style={{ margin: "0 auto", width: "100%" }} src="/Content/images/cuahang-6.jpg" /></div>
-                <div><img style={{ margin: "0 auto", width: "100%" }} src="/Content/images/cuahang-7.jpg" /></div>
+                    {imgSlide}
                 </Slider>
                 </div>
                 <div className="row" style={{}}>
