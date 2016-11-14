@@ -1,4 +1,5 @@
-﻿var React = require("react");
+﻿require("!style-loader!css-loader!postcss-loader!global.css");
+var React = require("react");
 var ReactDOM = require("react-dom");
 require("bootstrap");
 var Slider = require("react-slick");
