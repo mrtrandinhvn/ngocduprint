@@ -4,7 +4,8 @@
   "description": "Simple website to introduce a shop",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "webpack --watch --progress",
+    "build": "webpack -p --progress --env.production"
   },
   "author": "mrtrandinhvn@gmail.com",
   "repository": "https://github.com/mrtrandinhvn/idols-detector",
@@ -17,18 +18,20 @@
     "jquery": "^3.1.1",
     "postcss-loader": "^1.1.1",
     "react": "^15.3.2",
+    "react-autobind": "^1.0.6",
     "react-bootstrap": "^0.30.6",
     "react-dom": "^15.3.2",
     "react-dropzone": "^3.7.3",
-    "react-images": "^0.5.1",
+    "react-images": "^0.5.4",
     "react-modal": "^1.5.2",
-    "react-slick": "^0.14.5",
+    "react-slick": "^0.14.11",
     "style-loader": "^0.13.1",
-    "webpack": "^1.13.3"
+    "webpack": "^2.6.1"
   },
   "devDependencies": {
     "babel-core": "^6.17.0",
     "babel-loader": "^6.2.5",
+    "babel-plugin-transform-object-rest-spread": "latest",
     "babel-preset-es2015": "^6.16.0",
     "babel-preset-react": "^6.16.0"
   }

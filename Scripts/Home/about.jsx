@@ -1,59 +1,59 @@
-﻿require("!style-loader!css-loader!postcss-loader!global.css");
-var React = require("react");
-var ReactDOM = require("react-dom");
-require("bootstrap");
-var Slider = require("react-slick");
-var Lightbox = require("react-images");
-
-var images = [
+﻿const React = require("react");
+const ReactDOM = require("react-dom");
+import Slider from "react-slick";
+import Lightbox from "react-images";
+import autoBind from "react-autobind";
+const images = [
     { src: "/Content/images/cuahang-1.jpg" },
     { src: "/Content/images/cuahang-2.jpg" },
     { src: "/Content/images/cuahang-3.jpg" },
     { src: "/Content/images/cuahang-4.jpg" },
     { src: "/Content/images/cuahang-5.jpg" }
 ];
-var App = React.createClass({
-    getInitialState: function () {
-        return {
+class App extends React.Component {
+    constructor(props) {
+        super(props);
+        autoBind(this);
+        this.state = {
             lightboxIsOpen: false,
             currentImage: 0
         }
-    },
-    openLightbox: function (index) {
+    }
+    openLightbox(index) {
         this.setState({
             currentImage: index,
             lightboxIsOpen: true,
         });
-    },
-    closeLightbox: function () {
+    }
+    closeLightbox() {
         this.setState({
             currentImage: 0,
             lightboxIsOpen: false,
         });
-    },
-    gotoPrevious: function () {
+    }
+    gotoPrevious() {
         this.setState({
             currentImage: this.state.currentImage - 1,
         });
-    },
-    gotoNext: function () {
+    }
+    gotoNext() {
         this.setState({
             currentImage: this.state.currentImage + 1,
         });
-    },
-    gotoImage: function (index) {
+    }
+    gotoImage(index) {
         this.setState({
             currentImage: index,
         });
-    },
-    handleClickImage: function () {
+    }
+    handleClickImage() {
         if (this.state.currentImage === images.length - 1) return;
         this.gotoNext();
-    },
-    render: function () {
+    }
+    render() {
         var imgSlide = images.map(function (image, index) {
             return (
-                <div key={index} onClick={function () { this.openLightbox(index) }.bind(this) }><img style={{ margin: "0 auto", width: "100%" }} src={image.src} /></div>
+                <div key={index} onClick={function () { this.openLightbox(index) }.bind(this)}><img style={{ margin: "0 auto", width: "100%" }} src={image.src} /></div>
             );
         }.bind(this));
         return (
@@ -63,15 +63,15 @@ var App = React.createClass({
                 </div>
                 <div className="slider-container">
                     <Lightbox currentImage={this.state.currentImage}
-                              images={images}
-                              isOpen={this.state.lightboxIsOpen}
-                              onClickImage={this.handleClickImage}
-                              onClickNext={this.gotoNext}
-                              onClickPrev={this.gotoPrevious}
-                              onClickThumbnail={this.gotoImage}
-                              onClose={this.closeLightbox}
-                              showThumbnails={true}></Lightbox>
-                <Slider dots={true}
+                        images={images}
+                        isOpen={this.state.lightboxIsOpen}
+                        onClickImage={this.handleClickImage}
+                        onClickNext={this.gotoNext}
+                        onClickPrev={this.gotoPrevious}
+                        onClickThumbnail={this.gotoImage}
+                        onClose={this.closeLightbox}
+                        showThumbnails={true}></Lightbox>
+                    <Slider dots={true}
                         infinite={true}
                         speed={500}
                         slidesToShow={1}
@@ -80,8 +80,8 @@ var App = React.createClass({
                         autoplay={false}
                         autoplaySpeed={8000}
                         initialSlide={0}>
-                    {imgSlide}
-                </Slider>
+                        {imgSlide}
+                    </Slider>
                 </div>
                 <div className="row" style={{}}>
                     <div className="col-sm-12">
@@ -130,17 +130,17 @@ var App = React.createClass({
                         <br />
                         - Số lượng nhiều và thường xuyên sẽ được giảm giá.
                         <br />
-                        Giao nhận tài liệu, hồ sơ theo yêu cầu bằng nhiều hình thức, nhanh, kịp thời. 
+                        Giao nhận tài liệu, hồ sơ theo yêu cầu bằng nhiều hình thức, nhanh, kịp thời.
                         Khách hàng có thể gửi tài liệu cho chúng tôi theo địa chỉ:
                         <br />
                         <br />
                         Cửa hàng Ngọc Du: ngocduphoto@gmail.com
                         <br />
-                        Xưởng sản xuất: sau vận động Mỹ Đình       
+                        Xưởng sản xuất: sau vận động Mỹ Đình
                     </div>
                 </div>
             </div>
         );
     }
-});
-ReactDOM.render(<App></App>, document.querySelector(".react-app"));
+};
+ReactDOM.render(<App />, document.querySelector(".react-app"));

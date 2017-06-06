@@ -1,5 +1,12 @@
 ﻿@{
     ViewBag.Title = "In thiệp mời";
 }
-<div class="react-app"></div>
-<script src="@Scripts.Url("~/Scripts/built/homeInThiepMoi.bundle.js" + ViewBag.Version)"></script>
+<div>
+    <h1 class="page-title">In thiệp mời</h1>
+    <div class="banner" style="background-image: url(/Content/images/sanpham-thiepmoi.gif)"></div>
+    <div class="row">
+        <div class="col-sm-12">
+            @Html.ActionLink("Bảng giá dịch vụ", "BangGia")
+        </div>
+    </div>
+</div>

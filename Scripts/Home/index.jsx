@@ -1,9 +1,9 @@
 ﻿require("!style-loader!css-loader!postcss-loader!global.css");
 var React = require("react");
 var ReactDOM = require("react-dom");
-require("bootstrap");
-var Slider = require("react-slick");
-var Lightbox = require("react-images");
+import Slider from "react-slick";
+import Lightbox from "react-images";
+import autoBind from "react-autobind"
 
 var images = [
     { src: "/Content/images/sanpham-danhthiep.gif", action: "/Home/InDanhThiep" },
@@ -18,48 +18,51 @@ var images = [
     { src: "/Content/images/sanpham-tieudethu.gif", action: "/Home/InTieuDeThu" },
     { src: "/Content/images/sanpham-toroi.gif", action: "/Home/InToRoi" }
 ];
-var App = React.createClass({
-    getInitialState: function () {
-        return {
+class App extends React.Component {
+    constructor(props) {
+        super(props);
+        autoBind(this);
+        this.state = {
             lightboxIsOpen: false,
             currentImage: 0
-        }
-    },
-    openLightbox: function (index) {
+        };
+    }
+
+    openLightbox(index) {
         this.setState({
             currentImage: index,
             lightboxIsOpen: true,
         });
-    },
-    closeLightbox: function () {
+    }
+    closeLightbox() {
         this.setState({
             currentImage: 0,
             lightboxIsOpen: false,
         });
-    },
-    gotoPrevious: function () {
+    }
+    gotoPrevious() {
         this.setState({
             currentImage: this.state.currentImage - 1,
         });
-    },
-    gotoNext: function () {
+    }
+    gotoNext() {
         this.setState({
             currentImage: this.state.currentImage + 1,
         });
-    },
-    gotoImage: function (index) {
+    }
+    gotoImage(index) {
         this.setState({
             currentImage: index,
         });
-    },
-    handleClickImage: function () {
+    }
+    handleClickImage() {
         if (this.state.currentImage === images.length - 1) return;
         this.gotoNext();
-    },
-    render: function () {
+    }
+    render() {
         var imgSlide = images.map(function (image, index) {
             return (
-                <div key={index} onClick={function () { this.openLightbox(index) }.bind(this) }>
+                <div key={index} onClick={function () { this.openLightbox(index) }.bind(this)}>
                     <img style={{ margin: "0 auto", width: "100%" }} src={image.src} />
                     <a className="btn btn-default" href={image.action}>Xem thêm</a>
                 </div>
@@ -68,56 +71,56 @@ var App = React.createClass({
         return (
             <div>
                 <div className="jumbotron"
-                     style={{
-                    backgroundImage: "url(\"/Content/images/banner-home.jpg\")",
-                    backgroundSize: "cover",
-                    backgroundRepeat: "no-repeat",
-                    backgroundPositionX: "-200px"
-                }}>
+                    style={{
+                        backgroundImage: "url(\"/Content/images/banner-home.jpg\")",
+                        backgroundSize: "cover",
+                        backgroundRepeat: "no-repeat",
+                        backgroundPositionX: "-200px"
+                    }}>
                     <div className="" style={{
-                            float: "right",
-                            backgroundColor: "rgba(255,255,255,0.8)",
-                            padding:"5px"
-                        }}>
-                    <h2 style={{ textAlign: "center" }}>Công ty cổ phần in Ngọc Du</h2>
-                    <h2 style={{ fontStyle: "italic", color: "#000054", fontWeight: "bold", textAlign: "center" }}>
-                        Uy tín là sức mạnh
+                        float: "right",
+                        backgroundColor: "rgba(255,255,255,0.8)",
+                        padding: "5px"
+                    }}>
+                        <h2 style={{ textAlign: "center" }}>Công ty cổ phần in Ngọc Du</h2>
+                        <h2 style={{ fontStyle: "italic", color: "#000054", fontWeight: "bold", textAlign: "center" }}>
+                            Uy tín là sức mạnh
                     </h2>
+                        <br />
+                        <h2 style={{ color: "red", fontWeight: "bold" }}>*Liên hệ*</h2>
+                        <p>
+                            <span className="glyphicon glyphicon-home"></span> Số 20, Trần Cung, Hà Nội
                     <br />
-                    <h2 style={{ color: "red", fontWeight: "bold" }}>*Liên hệ*</h2>
-                    <p>
-                    <span className="glyphicon glyphicon-home"></span> Số 20, Trần Cung, Hà Nội
+                            <span className="glyphicon glyphicon-home"></span> Xưởng sản xuất đằng sau SVĐ Mỹ Đình
                     <br />
-                    <span className="glyphicon glyphicon-home"></span> Xưởng sản xuất đằng sau SVĐ Mỹ Đình
+                            <span className="glyphicon glyphicon-envelope"></span> ngocduphoto@gmail.com
                     <br />
-                    <span className="glyphicon glyphicon-envelope"></span> ngocduphoto@gmail.com
+                            <span className="glyphicon glyphicon-phone-alt"></span> (04)62696225
                     <br />
-                    <span className="glyphicon glyphicon-phone-alt"></span> (04)62696225
+                            <span className="glyphicon glyphicon-phone"></span> 0914811747
                     <br />
-                    <span className="glyphicon glyphicon-phone"></span> 0914811747
-                    <br />
-                    </p>
+                        </p>
                     </div>
-                    <div style={{clear:"both"}}></div>
+                    <div style={{ clear: "both" }}></div>
                 </div>
                 <div className="slider-container" style={{
-                        margin: "0 auto",
-                        padding: "40px",
-                        color: "#333",
-                        background: "#419be0",
-                        width: "100%"
+                    margin: "0 auto",
+                    padding: "40px",
+                    color: "#333",
+                    background: "#419be0",
+                    width: "100%"
 
-                    }}>
+                }}>
                     <Lightbox currentImage={this.state.currentImage}
-                              images={images}
-                              isOpen={this.state.lightboxIsOpen}
-                              onClickImage={this.handleClickImage}
-                              onClickNext={this.gotoNext}
-                              onClickPrev={this.gotoPrevious}
-                              onClickThumbnail={this.gotoImage}
-                              onClose={this.closeLightbox}
-                              showThumbnails={true}></Lightbox>
-                <Slider dots={true}
+                        images={images}
+                        isOpen={this.state.lightboxIsOpen}
+                        onClickImage={this.handleClickImage}
+                        onClickNext={this.gotoNext}
+                        onClickPrev={this.gotoPrevious}
+                        onClickThumbnail={this.gotoImage}
+                        onClose={this.closeLightbox}
+                        showThumbnails={true}></Lightbox>
+                    <Slider dots={true}
                         infinite={true}
                         speed={500}
                         slidesToShow={1}
@@ -126,8 +129,8 @@ var App = React.createClass({
                         autoplay={false}
                         autoplaySpeed={8000}
                         initialSlide={0}>
-                    {imgSlide}
-                </Slider>
+                        {imgSlide}
+                    </Slider>
                 </div>
                 <div className="row" style={{}}>
                     <div className="col-sm-4">
@@ -169,5 +172,5 @@ var App = React.createClass({
             </div>
         );
     }
-});
+}
 ReactDOM.render(<App></App>, document.querySelector(".react-app"));

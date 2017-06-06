@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Version = "?gsv=1.3.0";
+    ViewBag.Version = "?gsv=1.4.0";
 }
 <!DOCTYPE html>
 <html>
@@ -12,9 +12,13 @@
     <meta name="geo.region" content="VN" />
     <title>Ngọc Du Print - In Ngọc Du - @ViewBag.Title</title>
     <link rel="alternate" href="http://ngocduprint.com/" hreflang="vi-vn" />
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <link rel="stylesheet" href="@Url.Content("~/Content/bootstrap/bootstrap.min.css" + ViewBag.Version)" />
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="@Url.Content("~/Content/bootstrap3-dialog/bootstrap-dialog.min.css"+ ViewBag.Version)" />
     <link rel="shortcut icon" href="@Url.Content("~/favicon.ico"+ ViewBag.Version)" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/global.css" + ViewBag.Version)" />
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" />
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" />
 </head>
@@ -36,6 +40,7 @@
                         <ul class="dropdown-menu">
                             <li>@Html.ActionLink("Cửa hàng", "About", "Home")</li>
                             <li>@Html.ActionLink("Khách hàng thân thiết", "KhachHang", "Home")</li>
+                            <li>@Html.ActionLink("Bảng giá dịch vụ", "BangGia", "Home")</li>
                         </ul>
                     </li>
                     <li class="dropdown">
